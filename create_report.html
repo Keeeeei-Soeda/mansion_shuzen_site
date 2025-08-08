@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>修繕計画AIレポート生成</title>
+  <title>修繕計画AIレポート生成 ver2.0</title>
    <link rel="stylesheet" href="style.css">
   <style>
     body { font-family: sans-serif; background: #f5f9f7; color: #222; }
@@ -16,7 +16,7 @@
 </head>
 <body>
   <div class="main">
-    <h1>修繕計画レポート自動生成</h1>
+    <h1>修繕計画レポート自動生成ver2.0</h1>
     <form id="reportForm">
       <label>築年数
         <input type="number" name="age" placeholder="例: 20" min="0" required>
@@ -53,16 +53,22 @@
         body: JSON.stringify(data)
       });
       console.log("fetchレスポンス:", res);
+      
 
       let result;
+
+      const resText = await res.text();
+      console.log('サーバーからの生レスポンス:', resText);
       try {
-        result = await res.json();
+        result = JSON.parse(resText);
         console.log("受信データ:", result);
       } catch(jsonErr) {
         console.error("JSON変換エラー:", jsonErr);
-        document.getElementById('output').innerHTML = `<span style="color:red;">受信データが不正です（JSONパースエラー）。</span>`;
+        document.getElementById('output').innerHTML = `<span style="color:red;">受信データが不正です（JSONパースエラー）。<br>サーバーレスポンス：<br><pre>${resText}</pre></span>`;
         return;
       }
+
+
 
       if (result.success) {
         document.getElementById('output').innerHTML = `
