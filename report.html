@@ -31,42 +31,54 @@
     </form>
     <div id="output"></div>
   </div>
-  <script>
-    document.getElementById('reportForm').onsubmit = async function(e) {
-      e.preventDefault();
-      document.getElementById('output').innerHTML = "AIがレポート作成中です。お待ちください…";
+<script>
+  document.getElementById('reportForm').onsubmit = async function(e) {
+    e.preventDefault();
+    document.getElementById('output').innerHTML = "AIがレポート作成中です。お待ちください…";
 
-      const data = {
-        age: this.age.value,
-        units: this.units.value,
-        area: this.area.value
-      };
+    const data = {
+      age: this.age.value,
+      units: this.units.value,
+      area: this.area.value
+    };
 
-      // ここにGASウェブアプリのURLを記載
-      const GAS_URL = "https://script.google.com/macros/s/AKfycbwdLujXHUyR25NduYE2Ztj_i_Hhd0Pz3QC3A-5jJo4HSJ3EsS6DOdnNaW74f2E2jjfKNg/exec";
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbyCppr5ENyRhUeAIbSqwg9P9YAyk0-8xYc1JsyYy8jKaGh6UrNE4zH-4KSgXLF9034bOw/exec";
+    console.log("送信データ:", data);
 
+    try {
+      const res = await fetch(GAS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      console.log("fetchレスポンス:", res);
+
+      let result;
       try {
-        const res = await fetch(GAS_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-        const result = await res.json();
-
-        if (result.success) {
-          document.getElementById('output').innerHTML = `
-            <span style="color:green;">レポートが完成しました！</span><br>
-            <a href="${result.url}" target="_blank">Googleドキュメントで見る・ダウンロード</a>
-            <br><br>
-            <small>※Googleアカウントで開く必要があります。</small>
-          `;
-        } else {
-          document.getElementById('output').innerHTML = `<span style="color:red;">エラー: ${result.error || 'AI出力失敗'}</span>`;
-        }
-      } catch (e) {
-        document.getElementById('output').innerHTML = `<span style="color:red;">通信エラーが発生しました。</span>`;
+        result = await res.json();
+        console.log("受信データ:", result);
+      } catch(jsonErr) {
+        console.error("JSON変換エラー:", jsonErr);
+        document.getElementById('output').innerHTML = `<span style="color:red;">受信データが不正です（JSONパースエラー）。</span>`;
+        return;
       }
+
+      if (result.success) {
+        document.getElementById('output').innerHTML = `
+          <span style="color:green;">レポートが完成しました！</span><br>
+          <a href="${result.url}" target="_blank">Googleドキュメントで見る・ダウンロード</a>
+          <br><br>
+          <small>※Googleアカウントで開く必要があります。</small>
+        `;
+      } else {
+        document.getElementById('output').innerHTML = `<span style="color:red;">エラー: ${result.error || 'AI出力失敗'}</span>`;
+      }
+    } catch (e) {
+      console.error("fetch通信エラー:", e);
+      document.getElementById('output').innerHTML = `<span style="color:red;">通信エラーが発生しました。</span>`;
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
