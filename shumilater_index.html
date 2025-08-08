@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>管理費・修繕積立金シミュレーション</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>マンション管理費・修繕積立金 シミュレーション</h1>
+  </header>
+  <main>
+    <section class="form-area">
+      <h2>条件を入力してください</h2>
+      <form id="simForm">
+        <label>
+          お部屋の面積 (㎡):
+          <input type="number" id="area" min="1" max="300" value="100" required>
+        </label>
+        <label>
+          戸数:
+          <input type="number" id="units" min="1" max="999" value="100" required>
+        </label>
+        <label>
+          築年数:
+          <input type="number" id="age" min="0" max="100" value="20" required>
+        </label>
+        <button type="submit">計算する</button>
+      </form>
+      <!-- ↓ココ！ボタン直下に設置 -->
+      <section id="result" class="result-area" style="display:none;">
+        <h2>計算結果</h2>
+        <div><b>年間管理費:</b> <span id="annual-fee"></span>円</div>
+        <div><b>年間修繕積立金:</b> <span id="annual-repair"></span>円</div>
+        <div><b>年間合計:</b> <span id="annual-total"></span>円</div>
+        <div><b>月間管理費:</b> <span id="monthly-fee"></span>円</div>
+        <div><b>月間修繕積立金:</b> <span id="monthly-repair"></span>円</div>
+        <div><b>月間合計:</b> <span id="monthly-total"></span>円</div>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <p>© Copyright (C) YourCompany All Rights Reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body {
+  font-family: 'Yu Gothic', 'Meiryo', sans-serif;
+  margin: 0;
+  background: #f7faf6;
+  color: #222;
+}
+
+header, footer {
+  background: #6FAE61;
+  color: #fff;
+  text-align: center;
+  padding: 1.2em 0;
+}
+
+main {
+  max-width: 480px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px #aaa2;
+  padding: 2em;
+}
+
+.form-area label {
+  display: block;
+  margin: 1em 0 0.5em;
+  font-weight: bold;
+}
+.form-area input {
+  width: 80px;
+  padding: 4px;
+  margin-left: 0.5em;
+}
+.form-area button {
+  margin-top: 1.2em;
+  padding: 0.5em 2em;
+  font-size: 1.1em;
+  background: linear-gradient(45deg, #6FAE61 60%, #5BCAB6);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-area button:hover {
+  background: linear-gradient(45deg, #5BCAB6 60%, #6FAE61);
+}
+.result-area {
+  background: #f0fef9;
+  border-radius: 10px;
+  margin-top: 2em;
+  padding: 1.5em;
+}
+.result-area div {
+  margin: 0.6em 0;
+  font-size: 1.15em;
+}
