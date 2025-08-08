@@ -14,10 +14,10 @@ header, footer {
 }
 
 main {
-  max-width: 600px;   /* ちょっと幅広く */
+  max-width: 600px;   /*入力する全体のスペースの大きさ*/
   margin: 30px auto;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 12px;/*角の部分の丸み*/
   box-shadow: 0 2px 6px #aaa2;
   padding: 2em;
 }
@@ -31,7 +31,7 @@ main {
 }
 
 .form-area input[type="number"] {
-  width: 200px;              /* 横幅UP */
+  width: 300px;              /* 横幅UP */
   height: 3.0em;             /* 高さUP */
   padding: 0.3em 0.8em;
   font-size: 1.15em;         /* フォント大きく */
@@ -46,6 +46,13 @@ main {
   border-color: #6FAE61;
   outline: none;
   background: #ebfff1;
+}
+
+.form-area input[type="number"]::placeholder {
+  font-size: 0.93em;     /* 入力文字より少し小さく */
+  color: #9ec2b1;        /* 淡いグリーン系 */
+  opacity: 1;            /* 薄すぎる場合は1に */
+  letter-spacing: 0.02em;
 }
 
 .form-area button {
@@ -76,4 +83,7 @@ main {
   margin: 0.7em 0;
   font-size: 1.13em;
 }
+
+
+
 
