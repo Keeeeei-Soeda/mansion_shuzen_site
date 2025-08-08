@@ -3,6 +3,7 @@ body {
   margin: 0;
   background: #f7faf6;
   color: #222;
+  font-size: 18px; /* ベースサイズUP */
 }
 
 header, footer {
@@ -13,7 +14,7 @@ header, footer {
 }
 
 main {
-  max-width: 480px;
+  max-width: 600px;   /* ちょっと幅広く */
   margin: 30px auto;
   background: #fff;
   border-radius: 12px;
@@ -23,35 +24,56 @@ main {
 
 .form-area label {
   display: block;
-  margin: 1em 0 0.5em;
+  margin: 1.4em 0 0.6em;
   font-weight: bold;
+  font-size: 1.15em;   /* ラベル大きめ */
+  letter-spacing: 0.05em;
 }
-.form-area input {
-  width: 80px;
-  padding: 4px;
+
+.form-area input[type="number"] {
+  width: 200px;              /* 横幅UP */
+  height: 3.0em;             /* 高さUP */
+  padding: 0.3em 0.8em;
+  font-size: 1.15em;         /* フォント大きく */
   margin-left: 0.5em;
+  border: 1.5px solid #b2dfc7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #f7fff9;
+  transition: border-color 0.2s;
 }
+.form-area input[type="number"]:focus {
+  border-color: #6FAE61;
+  outline: none;
+  background: #ebfff1;
+}
+
 .form-area button {
-  margin-top: 1.2em;
-  padding: 0.5em 2em;
-  font-size: 1.1em;
+  margin-top: 1.6em;
+  padding: 0.9em 2.5em;
+  font-size: 1.15em;
   background: linear-gradient(45deg, #6FAE61 60%, #5BCAB6);
   color: #fff;
   border: none;
-  border-radius: 24px;
+  border-radius: 28px;
   cursor: pointer;
-  transition: background 0.2s;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.1s;
 }
 .form-area button:hover {
   background: linear-gradient(45deg, #5BCAB6 60%, #6FAE61);
+  transform: scale(1.05);
 }
+
 .result-area {
   background: #f0fef9;
   border-radius: 10px;
-  margin-top: 2em;
-  padding: 1.5em;
+  margin-top: 2.2em;
+  padding: 1.8em;
+  font-size: 1.13em;   /* 結果の文字も大きめ */
 }
 .result-area div {
-  margin: 0.6em 0;
-  font-size: 1.15em;
+  margin: 0.7em 0;
+  font-size: 1.13em;
 }
+
