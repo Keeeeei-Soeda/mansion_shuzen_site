@@ -15,15 +15,36 @@
       <form id="simForm">
         <label>
           お部屋の面積 (㎡):
-          <input type="number" id="area" min="1" max="300" value="100" required>
+          <input 
+            type="number" 
+            id="area" 
+            min="1" 
+            max="300" 
+            placeholder="お部屋の面積を記入してください" 
+            required
+            >
         </label>
         <label>
           戸数:
-          <input type="number" id="units" min="1" max="999" value="100" required>
+          <input
+            type="number"
+            id="units"
+            min="1"
+            max="999"
+            placeholder="マンションの戸数を記入してください" 
+            required
+            >
         </label>
         <label>
           築年数:
-          <input type="number" id="age" min="0" max="100" value="20" required>
+          <input
+            type="number"
+            id="age"
+            min="0"
+            max="100"
+            placeholder="築年数を記入してください"
+            required
+            >
         </label>
         <button type="submit">計算する</button>
       </form>
